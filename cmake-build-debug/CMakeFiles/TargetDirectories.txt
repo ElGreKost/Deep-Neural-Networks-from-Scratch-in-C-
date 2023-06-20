@@ -1,0 +1,3 @@
+C:/Users/kosti_0b5rpb8/CLionProjects/myDnn/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+C:/Users/kosti_0b5rpb8/CLionProjects/myDnn/cmake-build-debug/CMakeFiles/myDnn.dir
+C:/Users/kosti_0b5rpb8/CLionProjects/myDnn/cmake-build-debug/CMakeFiles/edit_cache.dir
