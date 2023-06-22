@@ -7,4 +7,4 @@ include_directories(.)
 
 add_executable(myDnn
         0_abstract_NN_example.cpp
-        Pattern.h base.h common.h)
+        Pattern.h base.h common.h adaline.h)

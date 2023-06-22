@@ -581,7 +581,7 @@ public:
 
     friend int Disconnect(Base_Node *from_node, Base_Node *to_node);
 
-    friend double Random(double lower_bound, double upper_bound);
+    friend double RANDOM(double lower_bound, double upper_bound);
 };
 
 int Base_Node::ticket = -1;
@@ -617,7 +617,7 @@ int Disconnect(Base_Node *from_node, Base_Node *to_node) {
     } else return 0;
 }
 
-double Random(double lower_bound, double upper_bound) {
+double RANDOM(double lower_bound, double upper_bound) {
     return ((double) (rand() % RAND_MAX) / (double) RAND_MAX) *
            (upper_bound - lower_bound) + lower_bound;
 }
@@ -708,7 +708,7 @@ public:
         }
     }
 
-    virtual void Epock(int code = 0) {
+    virtual void Epoch(int code = 0) {
         for (int i = 0; i < num_nodes; ++i) node[i]->Epoch(code);
         for (int i = 0; i < num_links; ++i) link[i]->Epoch(code);
     }

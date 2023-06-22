@@ -1,6 +1,4 @@
 # ninja log v5
-2	491	7091178602473853	CMakeFiles/myDnn.dir/0_abstract_NN_example.cpp.obj	4d0603df4e14bb7d
-492	593	7091178603459054	myDnn.exe	b07327bd5778131c
-1	197	7090118526475308	build.ninja	ebe11b9ce9156e38
 3	468	7091178906773890	CMakeFiles/myDnn.dir/0_abstract_NN_example.cpp.obj	4d0603df4e14bb7d
 469	565	7091178907702660	myDnn.exe	b07327bd5778131c
+1	197	7091383478491184	build.ninja	ebe11b9ce9156e38
