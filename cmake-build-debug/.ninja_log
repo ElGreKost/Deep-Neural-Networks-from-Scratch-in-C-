@@ -1,12 +1,6 @@
 # ninja log v5
-1	338	7089569713684916	CMakeFiles/myDnn.dir/main.cpp.obj	799f178db5579859
-340	577	7089569715885162	myDnn.exe	28d09f3dd6418121
-1	197	7089635717951983	build.ninja	ebe11b9ce9156e38
-0	460	7089635983668136	CMakeFiles/myDnn.dir/0_abstract_NN_example.cpp.obj	df15f6817207a3e7
-461	691	7089635985867699	myDnn.exe	1405ae7accc93bf4
-3	459	7089637010938532	CMakeFiles/myDnn.dir/0_abstract_NN_example.cpp.obj	df15f6817207a3e7
-460	625	7089637012666192	myDnn.exe	1405ae7accc93bf4
-3	457	7089637764305531	CMakeFiles/myDnn.dir/0_abstract_NN_example.cpp.obj	df15f6817207a3e7
-457	565	7089637765411971	myDnn.exe	1405ae7accc93bf4
-3	460	7089638198312834	CMakeFiles/myDnn.dir/0_abstract_NN_example.cpp.obj	df15f6817207a3e7
-460	611	7089638199731319	myDnn.exe	1405ae7accc93bf4
+2	491	7091178602473853	CMakeFiles/myDnn.dir/0_abstract_NN_example.cpp.obj	4d0603df4e14bb7d
+492	593	7091178603459054	myDnn.exe	b07327bd5778131c
+1	197	7090118526475308	build.ninja	ebe11b9ce9156e38
+3	468	7091178906773890	CMakeFiles/myDnn.dir/0_abstract_NN_example.cpp.obj	4d0603df4e14bb7d
+469	565	7091178907702660	myDnn.exe	b07327bd5778131c
