@@ -9,7 +9,7 @@
 #define MYDNN_COMMON_H
 
 /*The Input Node class is a generic Input Node. It can be used with most networks.*/
-class Input_Node : public Basic_Node
+class Input_Node : public Base_Node
 {
 public:
     /* Default of one value set member (NODE_VALUE) and one error set member (NODE_ERROR).*/
@@ -22,6 +22,7 @@ public:
 /*The Bias Node Class is a node that always produces the same output. the bias Node's default output is 1.0*/
 class Bias_Node: public Input_Node
 {
+public:
     Bias_Node(double bias = 1.0) : Input_Node(1) {value[0] = bias;}
     virtual void Set_Value(double value, int id=0) {} // disable Set_Value.
     virtual double Get_Value(int id = 0) {return value[0];}

@@ -28,6 +28,11 @@ public:
             link ->Update_Weight(delta);
             in_links.Next();
         }
+        // todo try this to test iterator here that we have to pointer but the real in_list
+//        for (auto lnk : in_links) {
+//            delta = value[LEARNING_RATE] * error[NODE_ERROR] * lnk.In_Value();
+//            lnk.Update_Weight(delta);
+//        }
     }
 };
 

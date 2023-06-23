@@ -6,5 +6,4 @@ set(CMAKE_CXX_STANDARD 14)
 include_directories(.)
 
 add_executable(myDnn
-        0_abstract_NN_example.cpp
-        Pattern.h base.h common.h adaline.h test.cpp)
+        Pattern.h base.h common.h adaline.h test.cpp main.cpp Examples/abstract_Network.h Examples/adaline_Network.h)
