@@ -38,10 +38,11 @@ protected:
     int value_size;
 
 public:
-    explicit Base_Link(int size = 1) {
+    explicit Base_Link(int size = 1): id(++ticket), value_size(size) {
         value = value_size > 0 ? new double[value_size] : NULL;
         for (int i = 0; i < value_size; ++i)
             value[i] = 0.0;
+        in_node = out_node = NULL;
     }
 
     ~Base_Link() { if (value_size > 0) delete[] value; }
@@ -254,6 +255,8 @@ public:
         // Add to TAIL
         if (!curr) // if you don't specify where we add to the end.
         {
+            /// for iterator
+            temp->isTail = true;
 
             temp->prev = tail;
             temp->next = NULL;
@@ -263,8 +266,10 @@ public:
                 head = temp;
                 tail = temp;
             } else {
+                tail -> isTail = false;
                 tail -> next = temp;
                 tail = temp;
+
             }
 
         }
@@ -364,18 +369,19 @@ public:
         // todo maybe when we access it because we want to return something
         //  returns the element of the elements
         //  lets say the value of the weight of the link and not the link node
+        // we don't use dereference on ptr because of the Add_Node which also has * and not &.
         T &access() override { return *ptr->element;}
 
         void advance() override {ptr = ptr->next; }
 
         bool equal(const Impl &i) const override {
-//            return ptr == ((ListIteratorImpl *) &i)->ptr;     ORIGINAL PAP
-            return ptr->isTail == ((ListIteratorImpl *) &i)->ptr->isTail;
+            return ptr == ((ListIteratorImpl *) &i)->ptr;     //ORIGINAL PAP
+//            return ptr->isTail == ((ListIteratorImpl *) &i)->ptr->isTail; // me trying to see how to iter cycle
         }
 
     private:
         NODE *ptr;
-        ListIteratorImpl(NODE *p) : ptr(p) {}
+        explicit ListIteratorImpl(NODE *p) : ptr(p) {}
         friend class LList;
     };
 
