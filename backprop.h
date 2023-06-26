@@ -30,13 +30,11 @@ protected:
     virtual double Compute_Error (int mode = 0) {
         auto desired_output = error[NODE_ERROR];
         auto actual_output = value[NODE_VALUE];
-//        todo i removed the sigmoid derivative aspect because I believe only the middle ones need it
         double sigmoid_derivative = value[NODE_VALUE] * (1.0 - value[NODE_VALUE]);
+
         return  sigmoid_derivative * (desired_output - actual_output);
-        // Now the error is the actual prediction error not the Rumelhart and McClelland's error for mid nodes
-//        double result =  desired_output - actual_output;
-//        return result;
     }
+
     virtual void Learn(int mode = 0) {
         double delta;
         error[NODE_ERROR] = Compute_Error();
@@ -47,14 +45,15 @@ protected:
 
         for (int i = 0; i < cnt; i++) {
             link = in_links.Curr();
-            delta = value[LEARNING_RATE] * error[NODE_ERROR] * link->In_Value();
+            delta = value[LEARNING_RATE] * error[NODE_ERROR] * link->In_Value(); // I don't get this link->In_Value().
             link->Update_Weight(delta);
             in_links.Next();
         }
-        // or with iterators: todo maybe make it work with iterators
-        // for (auto lnk : in_links)
-        //     delta = value[LEARNING_RATE] * error[NODE_ERROR] * lnk.In_Value(),
-        //     lnk.Update_Weight(delta);
+
+        /* or with iterators: todo maybe make it work with iterators
+         for (auto lnk : in_links)
+             delta = value[LEARNING_RATE] * error[NODE_ERROR] * lnk.In_Value(),
+             lnk.Update_Weight(delta); */
 
     }
 
@@ -67,14 +66,16 @@ public:
     BP_Middle_Node(double lr, double mt, int vSize=3, int eSize=1) : BP_Output_Node(lr, mt, vSize, eSize) {}
     virtual char *Get_Name() {static char name[]="BP_MIDDLE_NODE"; return name;}
 protected:
-    virtual double ComputeError (int mode = 0) {
+    virtual double Compute_Error (int mode = 0) {
         double total = 0;
         out_links.Reset_To_Head();
         int cnt = out_links.Count();
         for (int i = 0; i < cnt; i++) {
             total += out_links.Curr()->Weighted_Out_Error();
+            // Weighted_Out_Error = out_error * weight:curr->out
             out_links.Next();
         }
+        // total = <out_err, weight>
         return value[NODE_VALUE] * (1.0 - value[NODE_VALUE]) * total;
     }
 };

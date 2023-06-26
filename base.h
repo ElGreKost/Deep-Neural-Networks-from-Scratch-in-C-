@@ -287,11 +287,12 @@ public:
             }
         }
             // Add to Middle of List:
-        else
-            temp->prev = curr->prev,
-            temp->next = curr,
-            curr->prev->next = temp,
+        else {
+            temp->prev = curr->prev;
+            temp->next = curr;
+            curr->prev->next = temp;
             curr->prev = temp;
+        }
 
         count++;
         return 1;

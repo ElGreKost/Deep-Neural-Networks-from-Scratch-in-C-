@@ -7,7 +7,7 @@
 
 #include "backprop.h"
 
-void FFN_EX1_SIMPLE() {
+void FFN_EX1_SIMPLE() { // todo seems like to find the problem i will have to first print the initial weights and check the handwriten results with the ones the net provides
     srand(1);
 
     /// Create Training Set
@@ -32,8 +32,9 @@ void FFN_EX1_SIMPLE() {
 
     for (int i = 0; i < 9; ++i) Link[i] = new BP_Link();
 
+
     int curr = 0;
-    for (int i = 2; i < 4; i++)
+    for (int i = 2; i <= 4; i++)
         for (int j = 0; j <= 1; j++)
             Connect(Node[j], Node[i], Link[curr++]);
 
@@ -43,15 +44,15 @@ void FFN_EX1_SIMPLE() {
     // Train back prop
     long iteration = 0;
     int good = 0;
-    double tolerance = 0.5;
+    double tolerance = 0.4;
     double total_error;
-
-    while (good < 4) { // Train until all patterns are correct
+    while (good < 4 and iteration < 10000) { // Train until all patterns are correct
 
         good = 0;
         total_error = 0.0;
 
         for (int i = 0; i < 4; i++) {
+
             Node[0]->Set_Value(data[i]->In(0), 0);   // Set input node values (x).
             Node[1]->Set_Value(data[i]->In(1), 1);   // Set input node values (y).
 
@@ -59,17 +60,20 @@ void FFN_EX1_SIMPLE() {
             {
                 Node[j]->Run();
             }
+
             Node[5]->Set_Error(data[i]->Out(0)); // Set the error values of the output to the desired ones
 
 
-            // there is a problem in learn delta appears to be always 0...
             for (int j = 5; j >= 2; --j)                // backward pass
                 Node[j]->Learn();
 
-            if (fabs(Node[5]->Get_Value(0) - data[i] -> Out(0)) < tolerance) good++;
+            if (fabs(Node[5]->Get_Value() - data[i] -> Out(0)) < tolerance) good++;
+            if (iteration < 5 or (30 < iteration and iteration < 35)) cout << iteration << ":  predicted: " << Node[5]->Get_Value() << "   actual: " << data[i] -> Out(0) << endl;
 
-            total_error += fabs(Node[5]->Get_Error());
+            double out_error = fabs(Node[5]->Get_Error());
+            total_error += out_error;
         }
+
 
         if (iteration % 1000 == 0) cout << iteration << ".    " << good << "/4"
                                    << "    Error: " << setprecision(15) << total_error << endl;
