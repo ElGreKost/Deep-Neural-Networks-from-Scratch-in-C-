@@ -2,8 +2,8 @@
 // Created by kosti_0b5rpb8 on 23/6/2023.
 //
 
-#ifndef MYDNN_ADALINE_NETWORK_H
-#define MYDNN_ADALINE_NETWORK_H
+#ifndef MYDNN_ADALINE_EX1_H
+#define MYDNN_ADALINE_EX1_H
 //
 // Created by kosti_0b5rpb8 on 23/6/2023.
 //
@@ -148,4 +148,4 @@ void createData(string filename) {
 }
 
 
-#endif //MYDNN_ADALINE_NETWORK_H
+#endif //MYDNN_ADALINE_EX1_H

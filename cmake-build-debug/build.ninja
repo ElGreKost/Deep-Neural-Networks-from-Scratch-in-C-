@@ -63,6 +63,13 @@ build CMakeFiles/myDnn.dir/main.cpp.obj: CXX_COMPILER__myDnn_Debug C$:/Users/kos
   OBJECT_DIR = CMakeFiles\myDnn.dir
   OBJECT_FILE_DIR = CMakeFiles\myDnn.dir
 
+build CMakeFiles/myDnn.dir/plot_test.cpp.obj: CXX_COMPILER__myDnn_Debug C$:/Users/kosti_0b5rpb8/CLionProjects/myDnn/plot_test.cpp || cmake_object_order_depends_target_myDnn
+  DEP_FILE = CMakeFiles\myDnn.dir\plot_test.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always -std=gnu++14
+  INCLUDES = -IC:/Users/kosti_0b5rpb8/CLionProjects/myDnn/.
+  OBJECT_DIR = CMakeFiles\myDnn.dir
+  OBJECT_FILE_DIR = CMakeFiles\myDnn.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target myDnn
@@ -71,7 +78,7 @@ build CMakeFiles/myDnn.dir/main.cpp.obj: CXX_COMPILER__myDnn_Debug C$:/Users/kos
 #############################################
 # Link the executable myDnn.exe
 
-build myDnn.exe: CXX_EXECUTABLE_LINKER__myDnn_Debug CMakeFiles/myDnn.dir/test.cpp.obj CMakeFiles/myDnn.dir/main.cpp.obj
+build myDnn.exe: CXX_EXECUTABLE_LINKER__myDnn_Debug CMakeFiles/myDnn.dir/test.cpp.obj CMakeFiles/myDnn.dir/main.cpp.obj CMakeFiles/myDnn.dir/plot_test.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\myDnn.dir

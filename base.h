@@ -498,7 +498,7 @@ public:
     virtual void Epoch(int code = 0) {}
 
 
-    void Load(ifstream &infile) {
+    virtual void Load(ifstream &infile) {
         infile >> id;
 
         infile >> value_size;
@@ -512,7 +512,7 @@ public:
         for (int i = 0; i < error_size; ++i) infile >> error[i];
     }
 
-    void Save(ofstream &outfile) {
+    virtual void Save(ofstream &outfile) {
         outfile << setw(4) << id << endl;
         outfile << value_size;  // store value set.
         for (int i = 0; i < value_size; ++i) outfile << " " << setprecision(18) << value[i];
@@ -522,17 +522,17 @@ public:
         outfile << endl;
     }
 
-    double Get_Value(int id = NODE_VALUE) { return value[id]; }
+    inline virtual double Get_Value(int id = NODE_VALUE) { return value[id]; }
 
-    void Set_Value(double new_val, int id = NODE_VALUE) { value[id] = new_val; }
+    inline virtual void Set_Value(double new_val, int id = NODE_VALUE) { value[id] = new_val; }
 
-    double Get_Error(int id = NODE_ERROR) { return error[id]; }
+    inline virtual double Get_Error(int id = NODE_ERROR) { return error[id]; }
 
-    void Set_Error(double new_val, int id = NODE_ERROR) { error[id] = new_val; }
+    inline virtual void Set_Error(double new_val, int id = NODE_ERROR) { error[id] = new_val; }
 
-    int Get_ID(){ return id; }
+    inline int Get_ID(){ return id; }
 
-    char *Get_Name() {
+    inline virtual char *Get_Name() {
         static char name[] = "BASE_NODE";
         return name;
     }
@@ -544,7 +544,7 @@ public:
         link->Set_Out_Node(&to_node, to_node.Get_ID());
     }
 
-    void Print(ofstream &out) {
+    virtual void Print(ofstream &out) {
         out << "Node Id: " << id << "    Node Name: " << Get_Name() << endl;
         out << "Value set: ";
         for (int i = 0; i < value_size; ++i) out << value[i] << " ";
@@ -665,7 +665,7 @@ public:
         for (int i = 0; i < cnt; ++i) // for each node's input link
             total += in_links.Curr()->Weighted_In_Value(),
                     in_links.Next();
-        value[mode] = Transfer_Function(total);  // todo understand what "mode" is used for.
+        value[mode] = Transfer_Function(total);
     }
 
     virtual char *Get_Name() {

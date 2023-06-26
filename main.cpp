@@ -1,8 +1,5 @@
-#include "Examples/adaline_Network.h"
-#include "Examples/abstract_Network.h"
-
+#include "Examples/FeedForward/ffn_ex1_simple.h"
 
 int main() {
-    AdalineExample();
-//    AbstractNNExample();
+    FFN_EX1_SIMPLE();
 }
